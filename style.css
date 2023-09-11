@@ -1,6 +1,6 @@
 * {
     margin: 0;
-    padding:0;
+    padding: 10;
     box-sizing:border-box;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
@@ -13,6 +13,17 @@
     justify-content: center;
     background: #eee;
 }
+
+h1 {
+    font-size: 5rem;
+    margin-bottom: 0.5em;
+  }
+  
+  h2 {
+    margin-top: 1em;
+    font-size: 2rem;
+    margin-bottom: 0.5em;
+  }
 
 button {
     outline: none;
@@ -73,3 +84,14 @@ button:hover {
 #block_6, #block_7, #block_8 {
     border-bottom: none;
 }
+.playerWin {
+    color: green;
+  }
+  
+  .computerWin {
+    color: red;
+  }
+  
+  .draw {
+    color: orangered;
+  }
