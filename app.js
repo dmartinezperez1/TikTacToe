@@ -1,6 +1,6 @@
 //Player symbols
-const player1 = "X";
-const player2 = "O";
+const player1 = 'X';
+const player2 = 'O';
 
 //table of all possible winner combinations
 const winning_combinations = [
