@@ -6,26 +6,24 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
         <title>Tic-Tac-Toe</title>
         <link rel="stylesheet" href="style.css"/>
+        <script src="app.js"></script>
     </head>
     <body>
-        <div class="container" id="board">
+        <div class="board" id="board">
             <h1>Tic Tac Toe</h1>
-            <div class="play-area">
-                <div id="block_0" class="block" data-cell></div>
-                <div id="block_1" class="block" data-cell></div>
-                <div id="block_2" class="block" data-cell></div>
-                <div id="block_3" class="block" data-cell></div>
-                <div id="block_4" class="block" data-cell></div>
-                <div id="block_5" class="block" data-cell></div>
-                <div id="block_6" class="block" data-cell></div>
-                <div id="block_7" class="block" data-cell></div>
-                <div id="block_8" class="block" data-cell></div>
-            </div>
+            <div class="block" data-cell></div>
+            <div class="block" data-cell></div>
+            <div class="block" data-cell></div>
+            <div class="block" data-cell></div>
+            <div class="block" data-cell></div>
+            <div class="block" data-cell></div>
+            <div class="block" data-cell></div>
+            <div class="block" data-cell></div>
+            <div class="block" data-cell></div>
             <div class="winningMessage" id="winningMessage">
-                <div id="winner"></div>
-                <button onclick="reset_board()" id="resetButton">RESET BOARD</button>
+                <div data-winning-message></div>
+                <button id="resetButton">RESET BOARD</button>
             </div>
         </div>
-        <script src="app.js"></script>
     </body>
 </html>
