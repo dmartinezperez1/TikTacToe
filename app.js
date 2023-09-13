@@ -1,6 +1,6 @@
 //Player symbols
-const player1 = 'X';
-const player2 = 'O';
+const player1 = 'x';
+const player2 = 'circle';
 
 //table of all possible winner combinations
 const winning_combinations = [
@@ -19,7 +19,7 @@ const cellElements = document.querySelectorAll('[data-cell]')
 const boardElement = document.getElementById('board')
 const winningMessageElement = document.getElementById('winningMessage')
 const resetButton = document.getElementById('resetButton')
-const winnerMessageText = document.getElementById('winner')
+const winnerMessageText = document.querySelector('[data-winning-message]')
 let isPlayer2Turn
 
 startGame()
