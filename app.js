@@ -20,7 +20,7 @@ const boardElement = document.getElementById('board')
 const winningMessageElement = document.getElementById('winningMessage')
 const resetButton = document.getElementById('resetButton')
 const winnerMessageText = document.getElementById('winner')
-let isPlayer2 = false
+let isPlayer2Turn
 
 startGame()
 
@@ -28,12 +28,12 @@ resetButton.addEventListener('click', startGame)
 
 //Start game function, set player 2, and clear board from previous game
 function startGame() {
-  isPlayer2 = false
+  isPlayer2Turn = false
   cellElements.forEach(cell => {
     cell.classList.remove(player1)
     cell.classList.remove(player2)
     cell.removeEventListener('click', handleCellClick)
-    cell.removeEventListener('click', handleCellClick, {once:true})
+    cell.addEventListener('click', handleCellClick, {once:true})
   })
   setBoardHoverClass()
   winningMessageElement.classList.remove('show')
@@ -43,7 +43,7 @@ function startGame() {
 //switching turns
 function handleCellClick(e) {
   const cell = e.target
-  const currentClass = isPlayer2 ? player2 : player1
+  const currentClass = isPlayer2Turn ? player2 : player1
   placeMark(cell, currentClass)
   if (checkWin(currentClass)) {
     endGame(false)
@@ -60,8 +60,45 @@ function endGame(draw) {
   if (draw) {
     winnerMessageText.innerText = "It's a draw!"
   } else {
-    winnerMessageText.innerText = 'Player with $(isPlayer2 ? "O" : "X"}wins!'
+    winnerMessageText.innerText = `${isPlayer2Turn ? "O's" : "X's"} Wins!`
   }
 
   winningMessageElement.classList.add('show')
+}
+
+//function to return if game is a draw
+function isDraw() {
+  return [...cellElements].every(cell => {
+    return cell.classList.contains(player1) || cell.classList.contains(player2)
+  })
+}
+
+//Function to place a X or O in selected cell
+function placeMark(cell, currentClass) {
+  cell.classList.add(currentClass)
+}
+
+//swaps turn after each turn
+function swapTurns(){
+  isPlayer2Turn = !isPlayer2Turn
+}
+
+//Function to use cursor to place X or O 
+function setBoardHoverClass() {
+  boardElement.classList.remove(player1)
+  boardElement.classList.remove(player2)
+  if (isPlayer2Turn) {
+    boardElement.classList.add(player2)
+  } else {
+    boardElement.classList.add(player1)
+  }
+}
+
+//Check to see if anyne has won
+function checkWin(currentClass) {
+  return winning_combinations.some(combination => {
+    return combination.every(index => {
+      return cellElements[index].classList.contains(currentClass)
+    })
+  })
 }
